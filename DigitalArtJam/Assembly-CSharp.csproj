@@ -53,16 +53,37 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BackgroundAnimation.cs" />
      <Compile Include="Assets\Scripts\DialogBranch.cs" />
      <Compile Include="Assets\Scripts\DialogItem.cs" />
      <Compile Include="Assets\Scripts\DialogManager.cs" />
      <Compile Include="Assets\Scripts\DialogUI.cs" />
      <Compile Include="Assets\Scripts\DialogUIChoice.cs" />
      <Compile Include="Assets\Scripts\DialogUITalk.cs" />
+     <Compile Include="Assets\Scripts\DialogUITyping.cs" />
+     <Compile Include="Assets\SpriteDeformerTool\code\BaseOfMaterials.cs" />
+     <Compile Include="Assets\SpriteDeformerTool\code\Edge.cs" />
+     <Compile Include="Assets\SpriteDeformerTool\code\MedvedyaMath.cs" />
+     <Compile Include="Assets\SpriteDeformerTool\code\PointConstrain.cs" />
+     <Compile Include="Assets\SpriteDeformerTool\code\SpriteDeformer.cs" />
+     <Compile Include="Assets\SpriteDeformerTool\code\SpriteDeformerAnimation.cs" />
+     <Compile Include="Assets\SpriteDeformerTool\code\SpriteDeformerBlendShape.cs" />
+     <Compile Include="Assets\SpriteDeformerTool\code\SpriteDeformerBlendShapeAnimatorProxy.cs" />
+     <Compile Include="Assets\SpriteDeformerTool\code\SpriteDeformerEditorSaver.cs" />
+     <Compile Include="Assets\SpriteDeformerTool\code\SpriteDeformerStatic.cs" />
+     <Compile Include="Assets\SpriteDeformerTool\code\SpriteDeformerTargetPoints.cs" />
+     <Compile Include="Assets\SpriteDeformerTool\code\SpriteDeformerWithBaseOfMaterial_old.cs" />
+     <Compile Include="Assets\SpriteDeformerTool\code\SpriteDeformerWithMaterialPropertyBlock.cs" />
+     <Compile Include="Assets\SpriteDeformerTool\code\SpritePoint.cs" />
+     <Compile Include="Assets\SpriteDeformerTool\code\Triangulator.cs" />
+     <Compile Include="Assets\SpriteDeformerTool\Examples\DragCamera2D.cs" />
+     <Compile Include="Assets\SpriteDeformerTool\Examples\EXAMPLE_createSpriteDeformer.cs" />
+     <Compile Include="Assets\SpriteDeformerTool\Examples\EXAMPLE_monster.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+     <None Include="Assets\SpriteDeformerTool\code\AlphaTestWithColor.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />

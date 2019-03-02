@@ -18,6 +18,9 @@ public class DialogUI : MonoBehaviour
     private DialogItem currentDialogItem;
     private DialogItemType currentDialogItemType;
     private DialogItemType previousDialogItemType;
+    private string previousDialogActor = "";
+
+    private GameObject typingInstance;
  
     private int scrollToBottom = 0;
 
@@ -39,6 +42,12 @@ public class DialogUI : MonoBehaviour
             choices[i].SetDialogUI(this);
         }
         choiceContainer.SetActive(false);
+
+        // Init Typing instance
+        typingInstance = GameObject.Instantiate(prefabTyping);
+        typingInstance.SetActive(false);
+        typingInstance.transform.SetParent(dialogContent.transform);
+        typingInstance.transform.localScale = Vector3.one;
     }
 
     // Update is called once per frame
@@ -87,6 +96,9 @@ public class DialogUI : MonoBehaviour
         if (currentDialogItem) {
             previousDialogItemType = currentDialogItem.type;
         }
+
+        if (previousDialogItemType == DialogItemType.Typing)
+            HideTyping();
         
         currentDialogItem = dialogItem;
         currentDialogItemType = dialogItem.type;
@@ -99,6 +111,10 @@ public class DialogUI : MonoBehaviour
             case DialogItemType.Question:
                 LoadQuestion(dialogItem);
             break;
+
+            case DialogItemType.Typing:
+                LoadTyping();
+            break;
         }
     }
 
@@ -108,8 +124,12 @@ public class DialogUI : MonoBehaviour
         newDialog.transform.localScale = Vector3.one;
 
         newDialog.GetComponent<DialogUITalk>().SetText(dialogItem.text);
+        if (previousDialogActor != "bot")
+            newDialog.GetComponent<DialogUITalk>().MakeFirstMessage();
 
         scrollToBottom++;
+
+        previousDialogActor = "bot";
     }
 
     private void LoadQuestion(DialogItem dialogItem) {
@@ -120,14 +140,21 @@ public class DialogUI : MonoBehaviour
             choices[i].LoadAnswer(dialogItem.answers[i]);
         }
         choiceContainer.SetActive(true);
-        
+
         scrollToBottom++;
     }
 
     
 
     private void LoadTyping() {
+        typingInstance.SetActive(true);
+        typingInstance.transform.SetAsLastSibling();
+
         scrollToBottom++;
+    }
+
+    private void HideTyping() {
+        typingInstance.SetActive(false);
     }
 
     public void HideChoices() {
@@ -150,5 +177,7 @@ public class DialogUI : MonoBehaviour
         newDialog.GetComponent<DialogUITalk>().SetText(text);
 
         scrollToBottom++;
+
+        previousDialogActor = "player";
     }
 }
