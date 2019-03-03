@@ -169,6 +169,7 @@ public class BlobController : MonoBehaviour
     public void SetAppear() {
         previousState = state;
         state = "appear";
+        
         animator.SetBool("moving", false);
 
         transitionStart = Time.time;
@@ -177,11 +178,11 @@ public class BlobController : MonoBehaviour
     public void UpdateAppear() {
         float alpha = Mathf.Clamp01((Time.time - transitionStart) / appearDuration);
 
-        Color color = material.color;
+        Color color = Color.white;
         color.a = alpha;
         material.color = color;
 
-        if (alpha == 1f) {
+        if (alpha <= 0f) {
             SetIdle();
         }
     }
@@ -190,7 +191,7 @@ public class BlobController : MonoBehaviour
 
         float alpha = Mathf.Clamp01(1f - (Time.time - transitionStart) / disappearDuration);
 
-        Color color = material.color;
+        Color color = Color.white;
         color.a = alpha;
         material.color = color;
 
