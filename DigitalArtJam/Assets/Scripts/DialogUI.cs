@@ -15,6 +15,11 @@ public class DialogUI : MonoBehaviour
     public GameObject prefabChoice;
     public GameObject prefabTyping;
 
+    public AudioSource uiSoundSource;
+    public AudioClip botTalkClip;
+    public AudioClip botTypeClip;
+    public AudioClip playerTalkClip;
+
     private DialogItem currentDialogItem;
     private DialogItemType currentDialogItemType;
     private DialogItemType previousDialogItemType;
@@ -126,10 +131,11 @@ public class DialogUI : MonoBehaviour
         newDialog.GetComponent<DialogUITalk>().SetText(dialogItem.text);
         if (previousDialogActor != "bot")
             newDialog.GetComponent<DialogUITalk>().MakeFirstMessage();
+        previousDialogActor = "bot";
+
+        uiSoundSource.PlayOneShot(botTalkClip);
 
         scrollToBottom++;
-
-        previousDialogActor = "bot";
     }
 
     private void LoadQuestion(DialogItem dialogItem) {
@@ -149,6 +155,8 @@ public class DialogUI : MonoBehaviour
     private void LoadTyping() {
         typingInstance.SetActive(true);
         typingInstance.transform.SetAsLastSibling();
+
+        uiSoundSource.PlayOneShot(botTypeClip);
 
         scrollToBottom++;
     }
@@ -175,9 +183,10 @@ public class DialogUI : MonoBehaviour
         newDialog.transform.localScale = Vector3.one;
 
         newDialog.GetComponent<DialogUITalk>().SetText(text);
+        previousDialogActor = "player";
+
+        uiSoundSource.PlayOneShot(playerTalkClip);
 
         scrollToBottom++;
-
-        previousDialogActor = "player";
     }
 }

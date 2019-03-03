@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\BackgroundAnimation.cs" />
+     <Compile Include="Assets\Scripts\BlobController.cs" />
      <Compile Include="Assets\Scripts\DialogBranch.cs" />
      <Compile Include="Assets\Scripts\DialogItem.cs" />
      <Compile Include="Assets\Scripts\DialogManager.cs" />
