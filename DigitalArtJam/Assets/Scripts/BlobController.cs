@@ -11,7 +11,7 @@ public class BlobController : MonoBehaviour
     public float moveSpeed;
     public float rotateSpeed;
 
-    public string state = "idle";
+    public string state = "none";
     private string previousState = "";
     private Animator animator;
     private Material material;
@@ -25,8 +25,6 @@ public class BlobController : MonoBehaviour
     void Awake() {
         animator = this.GetComponent<Animator>();
         material = this.GetComponent<Renderer>().material;
-        Debug.Log(material.color);
-
     }
 
     // Update is called once per frame
@@ -61,6 +59,10 @@ public class BlobController : MonoBehaviour
 
             case "backToStart":
                 UpdateBackToStart();
+            break;
+
+            case "appear":
+                UpdateAppear();
             break;
 
             case "disappear":
@@ -152,24 +154,44 @@ public class BlobController : MonoBehaviour
         animator.SetInteger("shape", shapeNumber);
     }
 
-    private float disappearStart;
+    private float transitionStart;
 
+    public float appearDuration;
     public float disappearDuration;
 
     public void SetDisappear() {
         previousState = state;
         state = "disappear";
 
-        disappearStart = Time.time;
+        transitionStart = Time.time;
+    }
+
+    public void SetAppear() {
+        previousState = state;
+        state = "appear";
+        animator.SetBool("moving", false);
+
+        transitionStart = Time.time;
+    } 
+
+    public void UpdateAppear() {
+        float alpha = Mathf.Clamp01((Time.time - transitionStart) / appearDuration);
+
+        Color color = material.color;
+        color.a = alpha;
+        material.color = color;
+
+        if (alpha == 1f) {
+            SetIdle();
+        }
     }
 
     public void UpdateDisappear() {
 
-        float alpha = Mathf.Clamp01(1f - (Time.time - disappearStart) / disappearDuration);
+        float alpha = Mathf.Clamp01(1f - (Time.time - transitionStart) / disappearDuration);
 
         Color color = material.color;
         color.a = alpha;
-        Debug.Log(color);
         material.color = color;
 
         if (alpha == 1f) {

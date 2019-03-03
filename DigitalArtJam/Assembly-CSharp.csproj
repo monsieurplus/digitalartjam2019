@@ -55,6 +55,9 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BackgroundAnimation.cs" />
      <Compile Include="Assets\Scripts\BlobController.cs" />
+     <Compile Include="Assets\Scripts\CreatureFinal.cs" />
+     <Compile Include="Assets\Scripts\CreatureManager.cs" />
+     <Compile Include="Assets\Scripts\CreatureShape.cs" />
      <Compile Include="Assets\Scripts\DialogBranch.cs" />
      <Compile Include="Assets\Scripts\DialogItem.cs" />
      <Compile Include="Assets\Scripts\DialogManager.cs" />
@@ -62,6 +65,7 @@
      <Compile Include="Assets\Scripts\DialogUIChoice.cs" />
      <Compile Include="Assets\Scripts\DialogUITalk.cs" />
      <Compile Include="Assets\Scripts\DialogUITyping.cs" />
+     <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\SpriteDeformerTool\code\BaseOfMaterials.cs" />
      <Compile Include="Assets\SpriteDeformerTool\code\Edge.cs" />
      <Compile Include="Assets\SpriteDeformerTool\code\MedvedyaMath.cs" />
