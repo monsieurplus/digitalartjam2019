@@ -25,11 +25,21 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P))
+            TogglePause();
+
         if (introIng)
             UpdateIntro();
 
         if (outroIng)
             UpdateOutro();
+    }
+
+    private bool paused = false;
+    private void TogglePause() {
+        paused = !paused;
+
+        Time.timeScale = (paused ? 0f : 1f);
     }
 
     private bool introIng = false;

@@ -182,7 +182,7 @@ public class BlobController : MonoBehaviour
         color.a = alpha;
         material.color = color;
 
-        if (alpha <= 0f) {
+        if (alpha == 1f) {
             SetIdle();
         }
     }
@@ -195,7 +195,7 @@ public class BlobController : MonoBehaviour
         color.a = alpha;
         material.color = color;
 
-        if (alpha == 1f) {
+        if (alpha == 0f) {
             this.transform.gameObject.SetActive(false);
             state = "finished";
         }
