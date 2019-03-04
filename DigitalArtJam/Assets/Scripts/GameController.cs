@@ -44,7 +44,7 @@ public class GameController : MonoBehaviour
 
     private bool introIng = false;
     private float introStart;
-    private float introDuration = 10f;
+    private float introDuration = 12f;
     public void StartIntro() {
         introIng = true;
         introStart = Time.time;
