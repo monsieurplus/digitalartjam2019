@@ -7,8 +7,6 @@ public class GameController : MonoBehaviour
     public GameObject splash;
     public BlobController blob;
     public DialogManager dialog;
-    
-
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +42,7 @@ public class GameController : MonoBehaviour
 
     private bool introIng = false;
     private float introStart;
-    private float introDuration = 12f;
+    public float introDuration = 9f;
     public void StartIntro() {
         introIng = true;
         introStart = Time.time;
@@ -64,7 +62,7 @@ public class GameController : MonoBehaviour
 
     private bool outroIng = false;
     private float outroStart;
-    private float outroDuration = 10f;
+    public float outroDuration = 10f;
     private float outroBgDuration = 3f;
     public CanvasGroup outroBg;
 
